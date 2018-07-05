@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
+using WebAppLambda.Model;
+using Newtonsoft.Json;
+
 namespace WebAppLambda.Controllers
 {
     [Route("api/[controller]")]
@@ -20,7 +23,12 @@ namespace WebAppLambda.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return "value";
+
+            var jon = new Parson();
+            jon.Age = id;
+            jon.Name = "Jon";
+
+            return JsonConvert.SerializeObject( jon ) ;
         }
 
         // POST api/values
